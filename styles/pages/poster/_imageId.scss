@@ -1,0 +1,226 @@
+.poster-header {
+    .poster-navigation {
+        padding: 22px 80px;
+        padding-top: 125px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include respond-below(lg) {
+            padding: 14px 20px;
+        }
+
+        .poster-user {
+            display: flex;
+            align-items: center;
+
+            .poster-user-image {
+                border-radius: 100px;
+                background-color: $primary;
+                height: 55px;
+                width: 55px;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-position-y: center;
+                background-position-x: center;
+            }
+
+            .poster-user-info {
+                padding-left: 10px;
+
+                p {
+                    margin: 0;
+                }
+
+                .poster-user-name {
+                    color: $primary;
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 1;
+                    padding-bottom: 4px;
+                }
+
+                .poster-user-tag {
+                    color: lighten($primary, 30%);
+                    font-size: 13px;
+                    line-height: 1;
+                }
+            }
+        }
+
+        .poster-actions {
+            button {
+                padding-left: 13px;
+                padding-right: 13px;
+                border-width: 2px;
+                border-color: $secondary;
+                margin-right: 6px;
+
+                &:nth-child(3) {
+                    margin-right: 50px;
+
+                    @include respond-below(lg) {
+                        margin-right: 0px;
+                    }
+                }
+            }
+
+            .poster-add-collection {
+            }
+
+            .poster-like {
+            }
+
+            .poster-download {
+                color: $secondary;
+
+                svg {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    .poster-actions-small {
+        text-align: left;
+        padding: 14px 20px;
+
+        button {
+            padding-left: 17px;
+            padding-right: 17px;
+            border-width: 2px;
+            border-color: $secondary;
+            margin-right: 6px;
+
+            @include respond-below(lg) {
+                padding: 8px 14px;
+            }
+
+            svg {
+                @include respond-below(lg) {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+
+        .add-collection {
+        }
+
+        .like {
+        }
+
+        .download {
+        }
+    }
+}
+
+.poster-section {
+    .poster-image-section-wrapper {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        text-align: center;
+
+        img {
+            margin: 0 auto;
+            width: 50%;
+            height: auto;
+        }
+    }
+}
+
+.poster-footer {
+    .poster-footer-wrapper {
+        padding: 40px 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include respond-below(xl) {
+            display: block;
+        }
+
+        @include respond-below(lg) {
+            padding: 14px 20px;
+        }
+
+        .poster-statistics {
+            text-align: left;
+
+            .poster-stat-list {
+                list-style: none;
+                margin-left: 0;
+                padding-left: 0;
+                margin-bottom: 0;
+                padding-bottom: 0;
+
+                .poster-stat-item {
+                    margin-left: 25px;
+                    display: inline-block;
+
+                    @include respond-below(lg) {
+                        display: block;
+                        margin-left: 0;
+                    }
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    .poster-stat-title {
+                        font-weight: 600;
+                    }
+
+                    p {
+                        margin-bottom: 0;
+                        color: $primary;
+                        font-size: 18px;
+
+                        @include respond-below(lg) {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .poster-license {
+            margin-bottom: 0;
+            color: $primary;
+
+            @include respond-below(lg) {
+                text-align: left;
+                margin-top: 18px;
+            }
+
+            span {
+                text-decoration: underline;
+                font-weight: 600;
+                color: $secondary;
+            }
+        }
+    }
+}
+
+.poster-title {
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: left;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    color: $primary;
+}
+.poster-under-title {
+    margin-bottom: 2%;
+    margin-top: 2%;
+    text-align: left;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: $primary;
+}
+
+
+

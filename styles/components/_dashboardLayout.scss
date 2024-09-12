@@ -1,0 +1,7 @@
+.dashboard-wrapper {
+    padding: 15px 15px 0px 15px;
+
+    @include respond-above(sm) {
+        padding: 50px 50px 0px 50px;
+    }
+}

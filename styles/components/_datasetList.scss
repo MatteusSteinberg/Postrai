@@ -1,0 +1,68 @@
+.dashboard-dataset-grid {
+}
+
+.dashboard-dataset-grid-item {
+    height: 420px;
+    width: 100%;
+    max-height: 420px;
+    overflow-y: auto;
+    position: relative;
+    background-color: $secondary;
+    color: white;
+
+    .dashboard-dataset-grid-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        .dashboard-dataset-upper {
+            .dataset-download-state {
+                padding: 12px 20px;
+                width: 100%;
+                text-transform: uppercase;
+                border-bottom: 1px solid white;
+                font-weight: 500;
+                font-size: small;
+            }
+
+            .dataset-grid-item-name {
+                font-size: x-large;
+                font-weight: 600;
+                padding: 12px 20px;
+                padding-bottom: 0px !important;
+                max-width: 240px;
+                margin-bottom: 0px;
+            }
+
+            .dataset-grid-item-description {
+                color: white;
+                opacity: 0.5;
+                font-size: small;
+                padding: 12px 20px;
+                max-width: 240px;
+            }
+        }
+
+        .dataset-grid-item-button-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+            padding: 12px 20px;
+
+            .dataset-grid-item-button {
+                background-color: #fff;
+                border-color: #fff;
+                color: #393d3fff;
+                width: 100%;
+
+                &:hover {
+                    background-color: #393d3fff;
+                    color: #fff;
+                    border-color: #393d3fff;
+                }
+            }
+        }
+    }
+}

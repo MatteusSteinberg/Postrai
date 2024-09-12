@@ -1,0 +1,244 @@
+import React, { useRef, useState, useEffect, Fragment } from "react"
+import { Button } from "react-bootstrap"
+import useWindowSize from "../../hooks/useWindowResize"
+
+const toolbox = {
+    cursor: "cursor",
+    box: "box",
+    triangle: "triangle",
+    pen: "pen",
+}
+
+export default function BuilderImage({ builderImage, addImages, activeTool, handleUpdateCreateBbox, activeLabel, updateResizeCoordinates }) {
+    const image = useRef()
+    const [builderImageState, setBuilderImageState] = useState(builderImage ? builderImage.tempId : null)
+    const [boxes, setBoxes] = useState([])
+    const [mouse, setMouse] = useState({ down: false, position: [0, 0] })
+    const [width, height] = useWindowSize()
+
+    const FileUploader = (props) => {
+        const hiddenFileInput = useRef(null)
+
+        const handleClick = (ev) => {
+            hiddenFileInput.current.click()
+        }
+
+        const handleChange = (ev) => {
+            const fileUploaded = ev.target.files[0]
+            addImages(ev.target.files)
+        }
+
+        return (
+            <>
+                <div className="builder-image">
+                    <div className="builder-image-container">
+                        <div className="builder-image-upload">
+                            {!builderImage && (
+                                <>
+                                    <div className="builder-upload" onClick={handleClick}>
+                                        <div className="builder-inner tour-step-object-upload-image">
+                                            <h3 className="builder-upload-title">Upload image</h3>
+                                            <Button>Upload</Button>
+                                            <input type="file" ref={hiddenFileInput} name="file" onChange={handleChange} style={{ display: "none" }} />
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </>
+        )
+    }
+
+    const handleBoxesData = (data, index) => {
+        if (data.type == "point") {
+            return (
+                <Fragment key={index}>
+                    <div style={{ top: `${data.y}px`, left: `${data.x}px` }} className="builder-image-point"></div>
+                </Fragment>
+            )
+        }
+        if (data.type == "polypoint") {
+            return (
+                <Fragment key={index}>
+                    <div style={{ top: `${data.y}px`, left: `${data.x}px` }} className="builder-image-polypoint"></div>
+                </Fragment>
+            )
+        }
+        if (data.type == "polyline") {
+            let styling
+            if (data.angle == "horizontal") {
+                styling = {
+                    top: `${data.y}px`,
+                    left: `${data.x}px`,
+                    right: `${data.x}px`,
+                    height: `${data.height}px`,
+                    width: `${data.width}px`,
+                }
+            }
+            if (data.angle == "vertical") {
+                styling = {
+                    top: `${data.y}px`,
+                    left: `${data.x}px`,
+                    bottom: `${data.y}px`,
+                    height: `${data.height}px`,
+                    width: `${data.width}px`,
+                }
+            }
+
+            return (
+                <Fragment key={index}>
+                    <div style={styling} className="builder-image-polyline"></div>
+                </Fragment>
+            )
+        }
+        if (data.type == "polybox") {
+            let styling = {
+                top: `${data.y}px`,
+                left: `${data.x}px`,
+                height: `${data.height}px`,
+                width: `${data.width}px`,
+            }
+            return (
+                <Fragment key={index}>
+                    <div style={styling} className="builder-image-polybox"></div>
+                </Fragment>
+            )
+        }
+    }
+
+    const calculateCoordinate = (ev) => {
+        const boundingBox = image.current.getBoundingClientRect()
+        return {
+            x: ev.pageX - boundingBox.x,
+            y: ev.pageY - boundingBox.y,
+        }
+    }
+
+    const handleMouseMove = (ev) => {
+        const coordinate = calculateCoordinate(ev)
+        const movingPoint = boxes.filter((x) => x.moving == true && x.type == "polypoint")[0]
+        if (mouse.down) {
+            if (activeTool == toolbox.cursor) {
+            } else if (activeTool == toolbox.box) {
+                let currentBoxes = boxes.filter((x) => x.moving == false && x.type == "polypoint")
+                currentBoxes.push({
+                    type: "polypoint",
+                    x: coordinate.x,
+                    y: coordinate.y,
+                    moving: true,
+                    autogenerated: false,
+                })
+                const startPoint = currentBoxes[0]
+                currentBoxes.push({
+                    type: "polypoint",
+                    x: startPoint.x,
+                    y: coordinate.y,
+                })
+                currentBoxes.push({
+                    type: "polypoint",
+                    x: coordinate.x,
+                    y: startPoint.y,
+                })
+
+                const mostLeftPoint = boxes.sort((a, b) => a.x + a.y - (b.x + b.y)).filter((x) => x.type != "polybox")
+                const polybox = {
+                    type: "polybox",
+                    x: mostLeftPoint[0].x,
+                    y: mostLeftPoint[0].y,
+                    width: mostLeftPoint[mostLeftPoint.length - 1].x - mostLeftPoint[0].x,
+                    height: mostLeftPoint[mostLeftPoint.length - 1].y - mostLeftPoint[0].y,
+                }
+                currentBoxes.push(polybox)
+                setBoxes([...currentBoxes])
+            }
+        }
+        setMouse({ ...mouse, position: [coordinate.x, coordinate.y] })
+    }
+
+    const handleMouseDown = (ev) => {
+        const coordinates = calculateCoordinate(ev)
+        if (activeTool == toolbox.box) {
+            setBoxes([{ type: "polypoint", x: coordinates.x, y: coordinates.y, moving: false, autogenerated: false }])
+            setMouse({ ...mouse, down: true })
+        }
+    }
+
+    const handleResizeNeeds = () => {
+        if (builderImage && updateResizeCoordinates) {
+            if (builderImage.height != image.current.height || builderImage.width != image.current.width) {
+                const yBuilderScaleFactor = builderImage.height / image.current.height
+                const xBuilderScaleFactor = builderImage.width / image.current.width
+
+                updateResizeCoordinates(xBuilderScaleFactor, yBuilderScaleFactor, builderImage.tempId)
+            }
+        }
+    }
+
+    const handleMouseUp = (ev) => {
+        const currentBoxes = [...boxes]
+        if (activeTool == toolbox.box) {
+            const polybox = boxes.filter((x) => x.type == "polybox")[0]
+            if (polybox) {
+                handleUpdateCreateBbox([polybox.x, polybox.y, polybox.width, polybox.height, image.current.width, image.current.height, image.current.naturalHeight, image.current.naturalWidth], builderImage.tempId)
+            }
+            setBoxes([])
+        }
+        if (activeTool == toolbox.cursor) {
+        }
+        setMouse({ ...mouse, down: false })
+    }
+
+    const LabelBox = () => {
+        handleResizeNeeds()
+
+        return (
+            <>
+                <div
+                    style={{
+                        top: `${builderImage.bbox[activeLabel][1]}px`,
+                        left: `${builderImage.bbox[activeLabel][0]}px`,
+                        width: `${builderImage.bbox[activeLabel][2]}px`,
+                        height: `${builderImage.bbox[activeLabel][3]}px`,
+                        backgroundColor: `${builderImage.labelColor[activeLabel]}`,
+                    }}
+                    className="builder-image-polybox"></div>
+            </>
+        )
+    }
+
+    useEffect(() => {
+        handleResizeNeeds()
+        return () => {}
+    }, [height, width])
+
+    return (
+        <>
+            {!builderImage && (
+                <>
+                    <FileUploader />
+                </>
+            )}
+            {builderImage && (
+                <>
+                    <div className="builder-image">
+                        <div className="builder-image-container">
+                            <div onMouseUp={() => setMouse({ ...mouse, down: false })} className="builder-image-upload">
+                                <div className="lasso-wrapper">
+                                    <div onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} className={`lasso-image ${activeTool}`}>
+                                        <img ref={image} src={builderImage.imageUrl} />
+                                        {boxes.map((value, index) => {
+                                            return handleBoxesData(value, index)
+                                        })}
+                                        {activeLabel != null && <LabelBox />}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )}
+        </>
+    )
+}

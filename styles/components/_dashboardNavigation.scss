@@ -1,0 +1,200 @@
+.fade-appear,
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 450ms linear 250ms;
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 150ms linear;
+}
+
+.dashboard-navigation-container {
+    max-height: 100vh;
+    height: 100vh;
+    width: 274px;
+    background-color: #fff;
+    padding: 38px;
+    position: relative;
+    transition: width 150ms ease-in-out, padding 150ms ease-in-out;
+
+    &.is-open {
+        width: 100px;
+        padding: 38px 22px 38px 22px;
+
+        .dashboard-navigation-menu {
+            margin-top: 40px;
+        }
+
+        .dashboard-navigation-fold {
+            padding: 22px 22px 38px 22px;
+            .dashboard-navigation-button {
+                .fold-in {
+                    justify-content: center;
+                    svg {
+                        transform: rotate(180deg);
+                    }
+                    .text {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .dashboard-navigation-subject {
+            .navigationSubject-content {
+                display: flex;
+                justify-content: center;
+                .navigationSubject-inner {
+                    .navigationSubject-content-name {
+                        display: none;
+                    }
+                }
+                .active-dot {
+                    display: none;
+                }
+            }
+        }
+
+        .dashboard-navigation-header {
+            .app-icon {
+                svg {
+                    .logo-text {
+                        opacity: 0;
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .dashboard-navigation-header {
+        .app-icon {
+            svg {
+                .logo-text {
+                    transition: opacity 150ms ease-in-out;
+                }
+            }
+        }
+    }
+
+    .dashboard-navigation-subject {
+        text-decoration-line: none;
+        margin: 15px 0px;
+
+        &.active {
+            .navigationSubject-content {
+                .navigationSubject-inner {
+                    .navigationSubject-content-name {
+                        color: black;
+                        font-weight: 500;
+                    }
+                }
+
+                .active-dot {
+                    visibility: visible;
+                }
+            }
+
+            path {
+                fill: $secondary !important;
+            }
+        }
+
+        .navigationSubject-content {
+            display: flex;
+            position: relative;
+            height: 30px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .navigationSubject-inner {
+                display: flex;
+                align-items: center;
+
+                svg {
+                    path {
+                        fill: rgba(57, 61, 63, 0.5);
+                    }
+                }
+
+                .navigationSubject-content-name {
+                    inline-size: 150px;
+                    overflow: hidden;
+                    margin-left: 15px;
+                    color: rgba(57, 61, 63, 0.5);
+                    margin-bottom: 0;
+                    margin-top: 0;
+                    font-weight: 500;
+                    display: inline;
+                    transition: opacity 150ms ease-in-out;
+                }
+            }
+
+            .active-dot {
+                visibility: hidden;
+                transition: opacity 150ms ease-in-out;
+
+                svg {
+                    path {
+                        fill: $primary;
+                    }
+                }
+            }
+        }
+    }
+
+    .dashboard-navigation-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 40px;
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow: hidden;
+    }
+
+    .dashboard-navigation-fold {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        min-height: 10px;
+        padding: 38px;
+
+        .dashboard-navigation-button {
+            .fold-in {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: rgba(57, 61, 63, 0.08);
+                border-radius: 100px;
+                border: none;
+                padding: 10px;
+                width: 100%;
+
+                svg {
+                    transition: transform 150ms ease-in-out;
+                }
+
+                .text {
+                    width: 100%;
+                    color: $primary;
+                    margin: 0;
+                    opacity: 1;
+                    font-size: 14px;
+                    display: inline;
+                    transition: opacity 150ms ease-in-out;
+                }
+            }
+        }
+    }
+}

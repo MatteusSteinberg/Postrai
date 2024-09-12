@@ -1,0 +1,29 @@
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 85px;
+
+    @include respond-above(lg) {
+        margin-top: 0;
+    }
+
+    .dashboard-title {
+        max-width: 50%;
+
+        .title {
+            font-size: 38px;
+            font-weight: 600;
+            margin-bottom: 0;
+            color: $primary;
+        }
+
+        .text {
+            margin-top: 5px;
+            opacity: 0.5;
+            color: $primary;
+            margin-bottom: 0;
+        }
+    }
+}

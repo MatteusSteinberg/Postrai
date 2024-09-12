@@ -1,0 +1,119 @@
+.register-form {
+    width: 100%;
+
+    .text-link {
+        color: $secondary;
+        transition: color 150ms ease-in-out;
+
+        &:hover {
+            color: darken($secondary, 10%);
+        }
+    }
+
+    .register-form-content {
+        margin-bottom: 30px;
+
+        .title {
+            font-size: 44px;
+            margin-bottom: 10px;
+            margin-top: 0;
+
+            @include respond-below(sm) {
+                font-size: 30px;
+            }
+        }
+
+        .text {
+            font-size: 16px;
+        }
+    }
+
+    .form-wrapper {
+        .form-group {
+            width: 100%;
+            margin-bottom: 27px;
+
+            .register-label {
+                font-size: 14px;
+            }
+
+            .form-validation {
+                display: none;
+                color: $error;
+            }
+
+            .form-validation-message {
+                display: block;
+                color: $error;
+            }
+
+            .email-input {
+                width: 100%;
+            }
+
+            .password-input {
+                width: 100%;
+            }
+        }
+
+        .register-btn {
+            color: #fff;
+            border: $secondary;
+            width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: space-between;
+
+            li {
+                width: 32%;
+                .register-fb-btn {
+                    width: 100%;
+                    background-color: #1877f2;
+                    border: $secondary;
+                    padding: 10px 0px;
+                    transition: all 150ms ease-in-out;
+
+                    &:hover {
+                        background-color: lighten(#1877f2, 15%);
+                    }
+                }
+                .register-google-btn {
+                    width: 100%;
+                    background-color: #ea4335;
+                    border: $secondary;
+                    padding: 10px 0px;
+                    transition: all 150ms ease-in-out;
+
+                    &:hover {
+                        background-color: lighten(#ea4335, 15%);
+                    }
+                }
+                .register-github-btn {
+                    width: 100%;
+                    background-color: #333;
+                    border: $secondary;
+                    padding: 10px 0px;
+                    transition: all 150ms ease-in-out;
+
+                    &:hover {
+                        background-color: lighten(#333, 15%);
+                    }
+                }
+            }
+        }
+
+        .terms {
+            margin: 0;
+            font-size: 14px;
+            color: lighten($primary, 15%);
+            margin-bottom: 27px;
+        }
+    }
+}

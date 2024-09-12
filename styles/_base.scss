@@ -1,0 +1,11 @@
+@import "./variables";
+
+body {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+
+    &.no-scroll {
+        overflow-y: hidden;
+    }
+}

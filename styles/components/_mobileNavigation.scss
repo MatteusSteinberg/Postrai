@@ -1,0 +1,208 @@
+.mobile-dashboard-navigation {
+    width: 100%;
+    padding: 15px 15px 0px 15px;
+
+    @include respond-above(sm) {
+        padding: 50px 50px 0px 50px;
+    }
+
+    .mobile-dashboard-wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        .mobile-menu-action {
+            position: relative;
+
+            &.is-open {
+                .mobile-menu-dropdown {
+                    display: block;
+                    opacity: 1;
+                    z-index: 9999;
+                    animation: menuDropdownShow 150ms ease-in-out;
+                }
+
+                .mobile-menu-icon {
+                    .mobile-menu-tab {
+                        svg {
+                            path {
+                                fill: $secondary;
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .mobile-menu-icon {
+                height: 100%;
+                display: inline-block;
+                background-color: $white;
+                border-radius: $border-radius;
+                box-shadow: 0px 0px 17px 6px rgba(0, 0, 0, 0.04);
+
+                .mobile-menu-tab {
+                    padding: 14px;
+                    position: relative;
+                    margin-top: 7px;
+
+                    .hamburger {
+                        z-index: 5;
+                        position: relative;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+
+                        .line {
+                            width: 30px;
+                            height: 2px;
+                            background-color: $primary;
+                            opacity: 0.7;
+                            display: block;
+                            margin: 5px auto;
+                            transition: all 150ms ease-in-out;
+
+                            &:first-child {
+                                margin-top: 0;
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+
+                        &.is-active {
+                            .line {
+                                background-color: $primary;
+                            }
+                            .line:nth-child(2) {
+                                opacity: 0;
+                            }
+                            .line:nth-child(1) {
+                                transform: translateY(7px) rotate(45deg);
+                            }
+                            .line:nth-child(3) {
+                                transform: translateY(-7px) rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .mobile-menu-dropdown {
+                opacity: 0;
+                display: none;
+                margin-top: 10px;
+                background-color: #fff;
+                border-radius: $border-radius;
+                padding: 28px;
+                position: absolute;
+                left: 0;
+                z-index: -999999;
+                min-width: 250px;
+
+                @include respond-above(sm) {
+                    min-width: 350px;
+                }
+
+                @keyframes menuDropdownShow {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    90% {
+                        opacity: 1;
+                    }
+                    100% {
+                        display: block;
+                    }
+                }
+
+                .mobile-menu-headline {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    position: relative;
+
+                    .menu-title {
+                    }
+                }
+
+                .dashboard-navigation-menu {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    max-height: 70vh;
+                    overflow-y: auto;
+                    overflow: hidden;
+                    .dashboard-navigation-subject {
+                        text-decoration-line: none;
+                        margin: 15px 0px;
+
+                        &.active {
+                            .navigationSubject-content {
+                                .navigationSubject-inner {
+                                    .navigationSubject-content-name {
+                                        color: black;
+                                        font-weight: 500;
+                                    }
+                                }
+
+                                .active-dot {
+                                    visibility: visible;
+                                }
+                            }
+
+                            path {
+                                fill: $secondary !important;
+                            }
+                        }
+
+                        .navigationSubject-content {
+                            display: flex;
+                            position: relative;
+                            height: 30px;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .navigationSubject-inner {
+                                display: flex;
+                                align-items: center;
+
+                                svg {
+                                    path {
+                                        fill: rgba(57, 61, 63, 0.5);
+                                    }
+                                }
+
+                                .navigationSubject-content-name {
+                                    inline-size: 150px;
+                                    overflow: hidden;
+                                    margin-left: 15px;
+                                    color: rgba(57, 61, 63, 0.5);
+                                    margin-bottom: 0;
+                                    margin-top: 0;
+                                    font-weight: 500;
+                                    display: inline;
+                                    transition: opacity 150ms ease-in-out;
+                                }
+                            }
+
+                            .active-dot {
+                                visibility: hidden;
+                                transition: opacity 150ms ease-in-out;
+
+                                svg {
+                                    path {
+                                        fill: $primary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

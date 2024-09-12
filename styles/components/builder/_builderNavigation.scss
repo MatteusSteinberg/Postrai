@@ -1,0 +1,93 @@
+.builder-navigation {
+    height: 75px;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(57, 61, 63, 0.15);
+
+    .builder-nav {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            .logo-wrapper {
+                background-color: $secondary;
+                height: 100%;
+                width: 75px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 150ms ease-in-out;
+
+                svg {
+                    transition: transform 150ms ease-in-out;
+                }
+
+                &:hover {
+                    background-color: darken($secondary, 5%);
+                    svg {
+                        transform: scale3d(0.98, 0.98, 0.98);
+                    }
+                }
+            }
+
+            .collection-name {
+                margin-left: 25px;
+
+                &:hover {
+                    .title {
+                        cursor: pointer;
+                    }
+                }
+                .title {
+                    font-size: 22px;
+                    color: $primary;
+                    font-weight: 600;
+                    margin-bottom: 0;
+                    border: none;
+                    transition: border-bottom 50ms ease-in-out;
+
+                    &:active {
+                        border-bottom: 2px solid $secondary;
+                    }
+
+                    &:focus-visible {
+                        border-bottom: 2px solid $secondary;
+                        outline: none;
+                    }
+
+                    &::placeholder {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+        .builder-user {
+            display: flex;
+            align-items: center;
+            margin-right: 25px;
+            position: relative;
+            .user-name {
+                margin: 0;
+                font-size: 18px;
+                padding-right: 15px;
+            }
+            .profile-image {
+                height: 51px;
+                width: 51px;
+                position: relative;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 100px;
+                }
+            }
+        }
+    }
+}

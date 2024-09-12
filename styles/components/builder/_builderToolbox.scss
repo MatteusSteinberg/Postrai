@@ -1,0 +1,115 @@
+.builder-toolbox {
+    height: 100%;
+    .builder-toolbox-wrapper {
+        height: 100%;
+        width: 75px;
+        background-color: #fff;
+        border-right: 1px solid rgba(57, 61, 63, 0.15);
+
+        .active-tool {
+            background-color: #F2F4F6 !important;
+            &.tool{
+                svg {
+                    path,
+                    rect {
+                        fill: $secondary;
+                    }
+                }
+                background-color: lighten($secondary, 90%);
+            }
+
+            &.tool2{
+                svg {
+                    path,
+                    rect {
+                        stroke: $secondary;
+                    }
+                }
+                background-color: lighten($secondary, 90%);
+            }
+        }
+    }
+
+    .builder-toolbox-selector {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &-help {
+            background-color: $secondary;
+            transition: background-color 150ms ease-in-out;
+            &:hover {
+                background-color: darken($secondary, 5%);
+            }
+        }
+        button {
+            border-radius: 0;
+            padding: 0;
+            border: none;
+            position: relative;
+            height: 75px;
+            width: 100%;
+            outline: none;
+            &:focus:active:visited {
+                outline: none;
+                box-shadow: none;
+                border-color: none;
+            }
+        }
+        .tool {
+            background-color: #fff;
+            border-bottom: 1px solid rgba(57, 61, 63, 0.15);
+            &:hover {
+                svg {
+                    path,
+                    rect {
+                        fill: $secondary;
+                    }
+                }
+                background-color: lighten($secondary, 90%);
+            }
+            &:active {
+                svg {
+                    stroke: $secondary;
+                }
+            }
+
+            svg {
+                transition: background-color 150ms ease-in-out;
+                path,
+                rect {
+                    transition: background-color 150ms ease-in-out,
+                        stroke 150ms ease-in-out, fill 150ms ease-in-out;
+                }
+            }
+        }
+        .tool2 {
+            background-color: #fff;
+            border-bottom: 1px solid rgba(57, 61, 63, 0.15);
+            &:hover {
+                svg {
+                    path,
+                    rect {
+                        stroke: $secondary;
+                    }
+                }
+                background-color: lighten($secondary, 90%);
+            }
+            &:active {
+                svg {
+                    stroke: $secondary;
+                }
+            }
+
+            svg {
+                transition: background-color 150ms ease-in-out;
+                path,
+                rect {
+                    transition: background-color 150ms ease-in-out,
+                        stroke 150ms ease-in-out, fill 150ms ease-in-out;
+                }
+            }
+        }
+    }
+}

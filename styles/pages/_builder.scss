@@ -1,0 +1,34 @@
+@import "../components/builder/builderNavigation";
+@import "../components/builder/builderToolbox";
+@import "../components/builder/builderImage";
+@import "../components/builder/builderSidebar";
+
+.builder {
+    background-color: #f2f4f6;
+    width: 100%;
+    height: 100vh;
+}
+.builder-container {
+    height: 100vh;
+    position: relative;
+
+    .builder-section {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        height: calc(100% - 75px);
+
+        .builder-main {
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .builder-sidebar {
+            background-color: white;
+            max-height: 100vh;
+            width: 368px;
+            border-left: 1px solid rgba(57, 61, 63, 0.15);
+        }
+    }
+}

@@ -1,0 +1,69 @@
+.dashboard-main {
+    .dashboard-cta {
+        .dashboard-buttons {
+            display: flex;
+            justify-content: space-between;
+
+            @include respond-below(xl) {
+                display: block;
+            }
+
+            .dashboard-cta {
+                background: linear-gradient(
+                    97.53deg,
+                    #6d61fb 0%,
+                    rgba(140, 69, 173, 0.72) 70.92%
+                );
+                border-radius: 11px;
+                width: 48%;
+
+                @include respond-below(xl) {
+                    width: 100%;
+                    &:last-child {
+                        margin-top: 25px;
+                    }
+                }
+
+                &.custom-bg {
+                    background: linear-gradient(
+                        276.95deg,
+                        #6d61fb 24.48%,
+                        rgba(140, 69, 173, 0.72) 94.3%
+                    );
+                    border-radius: 11px;
+                }
+
+                .dashboard-cta-inner {
+                    padding: 66px 47px;
+
+                    .cta-title {
+                        font-size: 34px;
+                        font-weight: 600;
+                        color: $white;
+                    }
+
+                    .cta-text {
+                        font-size: 18px;
+                        color: $white;
+                    }
+
+                    .cta-btn {
+                        background-color: $white;
+                        border-color: $white;
+                        color: $primary;
+
+                        &:hover {
+                            background-color: $primary;
+                            color: $white;
+                            border-color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .dashboard-liked-posters {
+        margin-top: 75px;
+    }
+}

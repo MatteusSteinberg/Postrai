@@ -1,0 +1,10 @@
+{
+    "kernels": [
+        "Cast"
+    ],
+    "backends": [
+        "cpu"
+    ],
+    "outputPath": "./custom_tfjs",
+    "forwardModeOnly": true
+}

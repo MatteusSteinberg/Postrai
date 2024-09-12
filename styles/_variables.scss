@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800&display=swap");
+
+/*
+
+Denne fil bliver brugt til at override bootstrap defaults.
+Læs mere på denne side: https://react-bootstrap.github.io/getting-started/introduction/#customize-bootstrap
+
+*/
+
+// Colors
+$primary: #393d3fff !default;
+$secondary: #6c63ff !default;
+$tertiary: #b8e1ffff !default;
+$success: #68b684ff !default;
+$error: #e05263ff !default;
+$outline: #e8ecef !default;
+$bg-dark: #f2f4f6 !default;
+$bg-light: #f8fafb !default;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "tertiary": $tertiary,
+    "success": $success,
+    "error": $error,
+    "outline": $outline,
+    "bg-dark": $bg-dark,
+    "bg-light": $bg-light,
+);
+
+// Font styling
+$font-family-sans-serif: "Poppins", sans-serif;
+
+// Input styling
+$input-btn-padding-y: 10px;
+$input-btn-padding-x: 0.75rem;
+$input-placeholder-color: rgba(57, 61, 63, 0.3);
+$input-focus-border-color: rgba(57, 61, 63, 0.3);
+$input-border-width: 2px;
+$input-focus-border-color: $secondary;
+$input-focus-box-shadow: transparent;
+
+// Default Border-radius
+$border-radius: 11px;
+
+// Button styling
+$btn-border-width: 2px;
+$btn-border-radius: $border-radius;
+$btn-padding-y: 12px;
+$btn-padding-x: 62px;
+$btn-font-weight: 600;
+$btn-box-shadow: none;
+$btn-focus-box-shadow: none;
+
+.btn {
+    text-transform: uppercase;
+    &:focus {
+        box-shadow: none;
+    }
+    &:active {
+        box-shadow: none;
+    }
+    &:visited {
+        box-shadow: none;
+    }
+
+    &.btn-primary {
+        &:focus {
+            box-shadow: none;
+        }
+        &:active {
+            box-shadow: none;
+        }
+        &:visited {
+            box-shadow: none;
+        }
+    }
+
+    &.loading-btn {
+        position: relative;
+
+        &.is-loading {
+            .btn-loading-text {
+                visibility: hidden;
+                opacity: 0;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                border: 4px solid transparent;
+                border-top-color: #ffffff;
+                border-radius: 50%;
+                animation: button-loading-spinner 1s ease infinite;
+            }
+        }
+
+        @keyframes button-loading-spinner {
+            from {
+                transform: rotate(0turn);
+            }
+
+            to {
+                transform: rotate(1turn);
+            }
+        }
+    }
+}
+
+// Alert
+$alert-padding-y: 10px;
+$alert-padding-x: 0.75rem;
+$alert-border-width: 2px;
+.alert {
+    font-size: 14px;
+    font-weight: 600;
+    &-error {
+        background: none !important;
+        border-color: $error !important;
+        color: $error !important;
+    }
+    &-success {
+        background: none !important;
+        border-color: $success !important;
+        color: $success !important;
+    }
+}
+
+@import "~bootstrap/scss/bootstrap";
+
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+// Custom Media queries mixins
+// @include respond-above(sm) {}
+@mixin respond-above($breakpoint) {
+    // If the breakpoint exists in the map.
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Get the breakpoint value.
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        // Write the media query.
+        @media (min-width: $breakpoint-value) {
+            @content;
+        }
+
+        // If the breakpoint doesn't exist in the map.
+    } @else {
+        // Log a warning.
+        @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+}
+
+//
+//  RESPOND BELOW
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-below(sm) {}
+@mixin respond-below($breakpoint) {
+    // If the breakpoint exists in the map.
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Get the breakpoint value.
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        // Write the media query.
+        @media (max-width: ($breakpoint-value - 1)) {
+            @content;
+        }
+
+        // If the breakpoint doesn't exist in the map.
+    } @else {
+        // Log a warning.
+        @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+}
+
+//
+//  RESPOND BETWEEN
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-between(sm, md) {}
+@mixin respond-between($lower, $upper) {
+    // If both the lower and upper breakpoints exist in the map.
+    @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper)
+    {
+        // Get the lower and upper breakpoints.
+        $lower-breakpoint: map-get($breakpoints, $lower);
+        $upper-breakpoint: map-get($breakpoints, $upper);
+
+        // Write the media query.
+        @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+            @content;
+        }
+
+        // If one or both of the breakpoints don't exist.
+    } @else {
+        // If lower breakpoint is invalid.
+        @if (map-has-key($breakpoints, $lower) == false) {
+            // Log a warning.
+            @warn 'Your lower breakpoint was invalid: #{$lower}.';
+        }
+
+        // If upper breakpoint is invalid.
+        @if (map-has-key($breakpoints, $upper) == false) {
+            // Log a warning.
+            @warn 'Your upper breakpoint was invalid: #{$upper}.';
+        }
+    }
+}

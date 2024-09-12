@@ -1,0 +1,179 @@
+.pai-tabs-wrapper {
+    padding-top: 35px;
+    padding-bottom: 40px;
+    background-color: #6a26da;
+
+    @include respond-above(md) {
+        padding-top: 55px;
+        padding-bottom: 60px;
+    }
+    @include respond-above(lg) {
+        padding-top: 85px;
+        padding-bottom: 127px;
+    }
+
+    .tabs-container {
+        .nav-tabs {
+            max-width: 760px;
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 60px;
+            border: none;
+
+            @include respond-above(lg) {
+                margin-bottom: 115px;
+                justify-content: space-between;
+            }
+
+            .nav-item {
+                button {
+                    background-color: transparent;
+                    font-size: 18px;
+                    font-weight: 400;
+                    letter-spacing: normal;
+                    line-height: 1.66666;
+                    color: rgba(255, 255, 255, 0.7);
+                    padding: 8px 20px;
+                    justify-content: space-around;
+                    border-radius: 100px;
+                    border: 2px solid;
+                    border-color: transparent;
+                    transition: border-color 150ms ease-in-out,
+                        color 150ms ease-in-out;
+
+                    &.active {
+                        color: #fff;
+                        border-color: #fff;
+                    }
+                }
+            }
+        }
+        .image-group {
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 28px 34px rgb(37 55 63 / 10%);
+
+            @include respond-above(lg) {
+                margin-right: 5px;
+            }
+
+            @media (min-width: 1600px) {
+                margin-right: 25px;
+            }
+
+            .tabs-feature-image {
+                &.image-1 {
+                    width: 100%;
+                }
+            }
+
+            .image-item-1 {
+                width: 20%;
+                position: absolute;
+                left: -10%;
+                bottom: -10%;
+                z-index: -1;
+
+                .tabs-shape {
+                    width: 100%;
+                }
+            }
+        }
+
+        .tabs-content-wrapper {
+            margin-top: 50px;
+
+            @include respond-above(md) {
+                margin-top: 0;
+            }
+
+            @media (min-width: 1600px) {
+                margin-left: 45px;
+            }
+
+            .tabs-headline {
+                color: white;
+                font-size: 35px;
+                font-weight: 600;
+                letter-spacing: -2px;
+                line-height: 1.20689;
+                margin-bottom: 40px;
+
+                @media (min-width: 480px) {
+                    font-size: 38px;
+                }
+
+                @include respond-above(md) {
+                    font-size: 48px;
+                }
+
+                @include respond-above(lg) {
+                    font-size: 58px;
+                }
+            }
+
+            .tabs-features {
+                margin-bottom: 25px;
+                display: block;
+
+                @media (min-width: 480px) {
+                    margin-bottom: 0px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                &-icon {
+                    min-width: 69px;
+                    max-width: 69px;
+                    min-height: 69px;
+                    max-height: 69px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 10px;
+
+                    @media (min-width: 480px) {
+                        margin-right: 30px;
+                        margin-bottom: 0;
+                    }
+
+                    &.bg-coral {
+                        background-color: #ff8d52;
+                    }
+
+                    &.bg-java {
+                        background-color: #15cda8;
+                    }
+                }
+
+                .tabs-features-body {
+                    max-width: 300px;
+
+                    &-title {
+                        font-size: 21px;
+                        font-weight: 600;
+                        font-style: normal;
+                        letter-spacing: normal;
+                        line-height: 1.619;
+                        color: white;
+                        margin-bottom: 0;
+                    }
+                    &-text {
+                        font-size: 16px;
+                        font-weight: 400;
+                        font-style: normal;
+                        letter-spacing: normal;
+                        line-height: 1.75;
+                        color: white;
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+    }
+}

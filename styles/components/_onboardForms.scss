@@ -1,0 +1,215 @@
+.personal-page {
+    .onboard-form-content {
+        .onboard-steps {
+            div {
+                &:nth-child(1) {
+                    background-color: $secondary;
+                }
+            }
+        }
+    }
+}
+
+.usage-page {
+    .onboard-form-content {
+        .onboard-steps {
+            div {
+                &:nth-child(1) {
+                    background-color: $secondary;
+                }
+
+                &:nth-child(2) {
+                    background-color: $secondary;
+                }
+            }
+        }
+    }
+}
+
+.done-page {
+    .onboard-form-content {
+        .onboard-steps {
+            div {
+                &:nth-child(1) {
+                    background-color: $secondary;
+                }
+
+                &:nth-child(2) {
+                    background-color: $secondary;
+                }
+
+                &:nth-child(3) {
+                    background-color: $secondary;
+                }
+            }
+        }
+    }
+}
+
+.onboard-form {
+    width: 100%;
+
+    .text-link {
+        color: $secondary;
+        transition: color 150ms ease-in-out;
+
+        &:hover {
+            color: darken($secondary, 10%);
+        }
+    }
+
+    .onboard-form-content {
+        margin-bottom: 30px;
+
+        .title {
+            font-size: 44px;
+            margin-bottom: 10px;
+            margin-top: 0;
+            max-width: 380px;
+            margin: 0 auto;
+
+            @include respond-below(sm) {
+                font-size: 30px;
+            }
+
+            animation: popIn 300ms ease-in-out forwards;
+
+            @keyframes popIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .onboard-steps {
+            margin-top: 20px;
+            text-align: center;
+
+            div {
+                display: inline-block;
+                background-color: #c4c4c4;
+                height: 3px;
+                width: 66px;
+
+                &:nth-child(2) {
+                    margin: 0px 25px;
+                }
+            }
+        }
+
+        .checkmark {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            margin: 10% auto;
+            box-shadow: inset 0px 0px 0px $secondary;
+            animation: fill 0.4s ease-in-out 0.4s forwards,
+                scale 0.3s ease-in-out 0.9s both;
+
+            .checkmark__circle {
+                width: 200px;
+                stroke-dasharray: 166;
+                stroke-dashoffset: 166;
+                stroke-width: 2;
+                stroke-miterlimit: 10;
+                stroke: $secondary;
+                fill: none;
+                animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+            }
+
+            .checkmark__check {
+                stroke: $secondary;
+                transform-origin: 50% 50%;
+                stroke-dasharray: 48;
+                stroke-dashoffset: 48;
+                animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+            }
+
+            @keyframes stroke {
+                100% {
+                    stroke-dashoffset: 0;
+                }
+            }
+
+            @keyframes scale {
+
+                0%,
+                100% {
+                    transform: none;
+                }
+
+                50% {
+                    transform: scale3d(1.1, 1.1, 1);
+                }
+            }
+
+            @keyframes fill {
+                100% {
+                    box-shadow: inset 0px 0px 0px 10px $secondary;
+                }
+            }
+        }
+    }
+
+    .form-wrapper {
+        .form-group {
+            width: 100%;
+            margin-bottom: 27px;
+
+            .personal-label,
+            .usage-label {
+                font-size: 14px;
+            }
+
+            .form-validation {
+                display: none;
+                color: $error;
+            }
+
+            .form-validation-message {
+                display: block;
+                color: $error;
+            }
+
+            .email-input {
+                width: 100%;
+            }
+
+            .password-input {
+                width: 100%;
+            }
+        }
+
+        animation: popIn 300ms ease-in-out forwards;
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    }
+
+    .onboard-btn {
+        color: #fff;
+        border: $secondary;
+        width: 100%;
+    }
+
+    .back-link {
+        text-align: center;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+}

@@ -1,0 +1,66 @@
+.reset-form {
+    width: 100%;
+
+    .text-link {
+        color: $secondary;
+        transition: color 150ms ease-in-out;
+
+        &:hover {
+            color: darken($secondary, 10%);
+        }
+    }
+
+    .reset-form-content {
+        margin-bottom: 30px;
+
+        .title {
+            font-size: 44px;
+            margin-bottom: 10px;
+            margin-top: 0;
+
+            @include respond-below(sm) {
+                font-size: 30px;
+            }
+        }
+    }
+
+    .form-wrapper {
+        .form-group {
+            width: 100%;
+            margin-bottom: 27px;
+
+            .reset-label {
+                font-size: 14px;
+            }
+
+            .form-validation {
+                display: none;
+                color: $error;
+            }
+
+            .form-validation-message {
+                display: block;
+                color: $error;
+            }
+
+            .email-input {
+                width: 100%;
+            }
+
+            .password-input {
+                width: 100%;
+            }
+        }
+
+        .reset-btn {
+            color: #fff;
+            border: $secondary;
+            width: 100%;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+    }
+}

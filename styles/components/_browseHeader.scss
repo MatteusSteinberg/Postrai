@@ -1,0 +1,206 @@
+.pai-browse {
+    .pai-browse-header {
+        background-color: #f5f5fd;
+        padding-top: 95px;
+        padding-bottom: 50px;
+
+        @include respond-above(md) {
+            padding-top: 190px;
+            padding-bottom: 180px;
+        }
+
+        .browse-header-content {
+            .browse-title {
+                color: #19191b;
+                font-weight: 600;
+                letter-spacing: -2.5px;
+                line-height: 1;
+                font-size: 34px;
+                line-height: 46px;
+                margin: 0;
+
+                @include respond-above(lg) {
+                    font-size: 65px;
+                    line-height: 84px;
+                }
+            }
+            .browse-text {
+                color: #696871;
+                font-size: 21px;
+                font-weight: 500;
+                letter-spacing: -0.66px;
+                line-height: 39px;
+                max-width: 500px;
+            }
+        }
+
+        .browse-search {
+            margin: 25px 0px;
+            .browse-form {
+                .form-group {
+                    height: 53px;
+                    max-width: 600px;
+                    position: relative;
+
+                    .browse-input-field {
+                        position: relative;
+                        padding-left: 40px;
+                        border: none;
+                        border-radius: 0;
+                        border-bottom: 2px solid lighten($primary, 50%);
+                        background-color: transparent;
+
+                        &:focus {
+                            border-bottom: 2px solid $secondary;
+                        }
+
+                    }
+
+                    svg {
+                        position: absolute;
+                        left: 0px;
+                        top: 10px;
+
+                        path {
+                            fill: $primary;
+                            opacity: 0.3;
+                        }
+                    }
+                }
+            }
+        }
+
+        .browse-trends {
+            margin-top: 21px;
+
+            @include respond-below(lg) {
+                font-size: 22px;
+            }
+
+            @include respond-below(md) {
+                font-size: 14px;
+            }
+
+            &-list {
+                .trends {
+                    list-style: none;
+                    margin-left: 0;
+                    padding-left: 0;
+
+                    li {
+                        display: inline-block;
+                    }
+
+                    .trends-title {
+                        font-weight: 600;
+                    }
+
+                    .trends-item {
+                        margin-left: 21px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* .pai-browse {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, #6c62fe 0%, #8c45ad 69.92%);
+    color: #fff;
+    position: relative;
+
+    .pai-browse-header {
+        text-align: center;
+
+        .pai-browse-inner {
+            padding-top: 214px;
+            padding-bottom: 171px;
+
+            .pai-browse-title {
+                margin-top: 0;
+                margin-bottom: -10px;
+                text-align: center;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 54px;
+                padding-bottom: 40px;
+
+
+                @include respond-below(lg) {
+                    font-size: 32px;
+                }
+
+                @include respond-below(md) {
+                    font-size: 28px;
+                }
+            }
+
+            .pai-browse-search {
+                .pai-browse-form {
+                    .form-group {
+                        height: 53px;
+                        max-width: 757px;
+                        margin: 0 auto;
+                        position: relative;
+
+                        .pai-browse-input {
+                            position: relative;
+                            padding-left: 50px;
+                        }
+
+                        svg {
+                            position: absolute;
+                            left: 10px;
+                            top: 10px;
+
+                            path {
+                                fill: $primary;
+                                opacity: 0.3;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            .pai-browse-trends {
+                margin: 0 auto;
+                margin-top: 21px;
+                text-align: center;
+
+
+                @include respond-below(lg) {
+                    font-size: 22px;
+                }
+
+                @include respond-below(md) {
+                    font-size: 14px;
+                }
+
+                &-list {
+                    .trends {
+                        list-style: none;
+                        margin-left: 0;
+                        padding-left: 0;
+
+                        li {
+                            display: inline-block;
+                        }
+
+                        .trends-title {
+                            font-weight: 600;
+                        }
+
+                        .trends-item {
+                            margin-left: 21px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} */

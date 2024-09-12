@@ -1,0 +1,88 @@
+.auth-wrapper {
+    width: 100%;
+    height: 100%;
+
+    @include respond-below(sm) {
+        margin: 50px 0px;
+    }
+
+    .auth-form-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        max-width: 450px;
+        margin: 0 auto;
+
+        @include respond-below(xl) {
+            max-width: 375px;
+        }
+
+        @include respond-below(lg) {
+            max-width: 550px;
+        }
+
+        @include respond-below(sm) {
+            display: inline;
+            height: 100%;
+        }
+    }
+
+    .auth-image-wrapper {
+        background-color: #e8e2dc;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .auth-image-inner {
+            .auth-image {
+                height: 400px;
+                width: 100%;
+
+                @include respond-below(xl) {
+                    height: 350px;
+                }
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .auth-dyk {
+                text-align: center;
+                padding-top: 50px;
+                max-width: 700px;
+                margin: 0 auto;
+
+                @include respond-below(xl) {
+                    max-width: 500px;
+                }
+
+                .dyk-title {
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 19px;
+                    margin-bottom: 0;
+                    color: $primary;
+
+                    @include respond-below(xl) {
+                        font-size: 17px;
+                    }
+                }
+
+                .dyk-text {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                    color: $primary;
+
+                    @include respond-below(xl) {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,131 @@
+.pai-header {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+
+    .pai-landing-wrapper {
+        padding-top: 100px;
+        padding-bottom: 0;
+        position: relative;
+
+        @include respond-above(md) {
+            padding-top: 140px;
+            padding-bottom: 0;
+        }
+
+        @include respond-above(lg) {
+            padding-top: 150px;
+            padding-bottom: 0;
+        }
+
+        @include respond-above(xl) {
+            padding-top: 170px;
+            padding-bottom: 0;
+        }
+
+        @include respond-above(xxl) {
+            padding-top: 160px;
+            padding-bottom: 0;
+        }
+
+        .header-content {
+            position: relative;
+            margin-bottom: 35px;
+            text-align: center;
+
+            .header-title {
+                font-weight: 600;
+                letter-spacing: -2px;
+                line-height: 1.1;
+                font-size: 40px;
+                margin-bottom: 25px;
+                z-index: 1;
+                position: relative;
+                color: $primary;
+
+                @media (min-width: 480px) {
+                    font-size: 50px;
+                }
+
+                @include respond-above(md) {
+                    font-size: 60px;
+                }
+
+                @include respond-above(lg) {
+                    font-size: 70px;
+                }
+            }
+
+            .header-text {
+                color: rgba(38, 39, 41, 0.7);
+                font-size: 18px;
+                font-weight: 400;
+                letter-spacing: normal;
+                line-height: 34px;
+                position: relative;
+                z-index: 1;
+
+                @include respond-above(md) {
+                    font-size: 21px;
+                }
+            }
+
+            .header-content-shape {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 0;
+                width: 18.5%;
+
+                @include respond-above(md) {
+                    left: 5%;
+                    top: -5%;
+                }
+
+                @include respond-above(lg) {
+                    left: 6%;
+                    top: -22%;
+                }
+
+                svg {
+                    width: 100%;
+                }
+            }
+        }
+
+        .header-image-group {
+            margin-top: 50px;
+
+            @include respond-above(lg) {
+                margin-top: 70px;
+            }
+
+            .header-image {
+                width: 100%;
+            }
+        }
+
+        .header-image-shape-1 {
+            position: absolute;
+            right: 0;
+            top: 35%;
+            z-index: 0;
+            width: 9.7%;
+            svg {
+                width: 100%;
+            }
+        }
+
+        .header-image-shape-2 {
+            position: absolute;
+            left: -4%;
+            bottom: 20%;
+            z-index: 0;
+            width: 10%;
+            svg {
+                width: 100%;
+            }
+        }
+    }
+}

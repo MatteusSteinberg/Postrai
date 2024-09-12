@@ -1,0 +1,146 @@
+.pai-landing-features {
+    padding-top: 55px;
+    padding-bottom: 5px;
+    position: relative;
+    border-top: 1px solid #dee2e6;
+
+    @include respond-above(md) {
+        padding-top: 70px;
+        padding-bottom: 25px;
+    }
+
+    @include respond-above(lg) {
+        padding-top: 125px;
+        padding-bottom: 113px;
+    }
+
+    .feature-bg-image {
+        top: 26%;
+        left: -6%;
+        width: 10%;
+        position: absolute;
+        display: none;
+
+        @include respond-above(lg) {
+            font-size: 40px;
+            display: block;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .features-headline {
+        .title {
+            font-weight: 600;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            font-size: 35px;
+            color: $primary;
+
+            @include respond-above(sm) {
+                font-size: 40px;
+            }
+
+            @include respond-above(md) {
+                font-size: 50px;
+            }
+
+            @include respond-above(lg) {
+                font-size: 60px;
+            }
+        }
+    }
+
+    .features-text {
+        .text {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: normal;
+            line-height: 1.61904;
+            margin-top: 15px;
+            margin-bottom: 0;
+            color: rgba(37, 55, 63, 0.7);
+
+            @include respond-above(md) {
+                font-size: 21px;
+            }
+
+            @include respond-above(lg) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .feature-items {
+        margin-top: 50px;
+        @include respond-above(lg) {
+            margin-top: 143px;
+        }
+
+        .feature-box {
+            display: flex;
+            margin-bottom: 30px;
+            flex-direction: column;
+
+            @include respond-above(lg) {
+                margin-bottom: 0;
+            }
+
+            &-icon {
+                min-width: 65px;
+                min-height: 65px;
+                max-width: 65px;
+                max-height: 65px;
+                border-radius: 50%;
+                position: relative;
+                margin-bottom: 65px;
+
+                &.first {
+                    background-color: #ffd166;
+                }
+
+                &.second {
+                    background-color: #96f7d2;
+                }
+
+                &.third {
+                    background-color: #a9d2ff;
+                }
+
+                @include respond-above(md) {
+                    margin-right: 0;
+                    margin-left: 0;
+                }
+
+                svg {
+                    position: absolute;
+                    bottom: -18%;
+                    right: -22%;
+                }
+            }
+
+            &-text {
+                .title {
+                    font-size: 21px;
+                    font-weight: 500;
+                    letter-spacing: normal;
+                    line-height: 34px;
+                    margin-bottom: 16px;
+                    color: $primary;
+                }
+
+                .text {
+                    font-size: 16px;
+                    font-weight: 400;
+                    letter-spacing: normal;
+                    line-height: 28px;
+                    max-width: 300px;
+                    color: $primary;
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
