@@ -16,7 +16,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ### Cloning the repo
 To work on the project, you should start of by cloning the repository
 ```bash
-git clone git@github.com:hrbang/Postrai.com-Dev.git
+git clone git@github.com:matteussteinberg/Postrai.git
 ```
 
 ### Downloading MongoDB and setting up database
